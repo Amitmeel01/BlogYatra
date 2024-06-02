@@ -1,0 +1,32 @@
+<%-include('./partials/head') %>
+<body>
+    <%-include('./partials/nav') %>
+     
+    <div class="container mt-3">
+       <form action="/add" method="post" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="title" name="title" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea type="text" class="form-control" id="content" aria-describedby="content" name="content"
+            placeholder="write some about your vlog.." required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="blogImage" class="form-label">Cover Image</label>
+            <input type="file" class="form-control" id="blogImage" aria-describedby="blogImage" name="blogImage" required>
+          </div>
+
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+          </div>
+       </form>
+    </div>
+
+    
+</body>

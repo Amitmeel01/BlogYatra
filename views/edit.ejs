@@ -1,0 +1,39 @@
+<%- include('./partials/head') %>
+<body>
+  <%- include('./partials/nav') %>
+
+  <div class="container mt-3">
+    <div style="text-align: center; padding: 1rem 0;">
+      <h2>Edit Your Blog</h2>
+    </div>
+
+    <form action="/<%=blogdata._id%>/update/?_method=PATCH" method="post" enctype="multipart/form-data">
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" aria-describedby="title" name="title" value="<%= blogdata.title %>" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea class="form-control" id="content" name="content" placeholder="Write something about your blog..." required><%= blogdata.content %></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="currentImage" class="form-label">Current Cover Image</label>
+        <div>
+          <img src="<%= blogdata.blogImage %>" alt="Current Cover Image" style="width: 400px; height: 300px;" >
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="replaceImage" class="form-label">Replace Cover Image</label>
+        <input type="file" class="form-control" id="replaceImage" name="blogImage">
+      </div>
+
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
