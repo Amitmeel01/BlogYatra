@@ -55,7 +55,7 @@ router.get("/:id", checkAuthenticationCookie("token"), async (req, res) => {
 
   const comments = await Comment.find({ blogId: req.params.id }).populate(
     "createdBy"
-  );
+  ).sort({createdAt:-1})
 
   res.render("view.ejs", {
     blog,
