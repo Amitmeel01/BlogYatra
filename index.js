@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(checkAuthenticationCookie('token'));
-const cors = require('cors');
+
 
 
 
@@ -44,13 +44,7 @@ async function main() {
 main();
 
 
-// CORS configuration
-const corsOption = {
-  origin: ['http://localhost:8080','https://life-style-blog-app.onrender.com' ],
 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-};
-app.use(cors(corsOption));
 
 // Routes
 app.use('/', require('./routes/user'));
