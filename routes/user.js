@@ -8,7 +8,7 @@ const checkAuthenticationCookie =require('../middleware/authetication')
 
 // Home Route
 router.get('/', checkAuthenticationCookie('token'), async (req, res) => {
-    const blogs = await Blog.find();
+    const blogs = await Blog.find().sort({createdAt:-1});
     res.render('home.ejs', {
         user: req.user,
         blogs
