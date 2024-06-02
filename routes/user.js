@@ -50,7 +50,13 @@ router.post('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
 
-   // Check if the email already exists
+  
+
+    const { fullName, email, password } = req.body;
+
+    try {
+
+         // Check if the email already exists
    const existingUser = await User.findOne({ email });
 
    if (existingUser) {
@@ -59,10 +65,6 @@ router.post('/signup', async (req, res) => {
    }
 
    // If email is not taken, proceed to create new user
-
-    const { fullName, email, password } = req.body;
-
-    try {
         const newUser = new User({
             fullName,
             email,
