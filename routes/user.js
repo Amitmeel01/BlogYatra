@@ -49,6 +49,17 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
+
+   // Check if the email already exists
+   const existingUser = await User.findOne({ email });
+
+   if (existingUser) {
+       // Email already exists, render signup page with error
+       return res.render('signup.ejs', { error: "User already exists with this email" });
+   }
+
+   // If email is not taken, proceed to create new user
+
     const { fullName, email, password } = req.body;
 
     try {
