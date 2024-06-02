@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
 const checkAuthenticationCookie = require("./middleware/authetication");
 require("dotenv").config()
-const favicon = require('serve-favicon');
+
 
 //middelwares
 app.set("views", path.join(__dirname, "views"));
@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(cookieParser());
 app.use(checkAuthenticationCookie('token'))
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 const cors = require('cors');
 
 
@@ -34,9 +34,9 @@ async function main() {
 }
 
 
-// CORS configuration
+// // CORS configuration
 const corsOption = {
-  origin: ['http://localhost:8080', 'https://file-sharing-app-pimo.onrender.com'],
+  origin: ['http://localhost:8080', 'https://life-style-blog-app.onrender.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 app.use(cors(corsOption));
