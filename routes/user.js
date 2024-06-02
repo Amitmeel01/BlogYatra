@@ -74,8 +74,7 @@ router.post('/signup', async (req, res) => {
         await newUser.save();
         res.redirect('/login');
     } catch (err) {
-        console.error(err);
-        res.status(500).send("Server error");
+        return res.render('signup.ejs', { error: "User already exists with this email" });
     }
 });
 
