@@ -159,9 +159,7 @@ router.get("/:id", checkAuthenticationCookie("token"), async (req, res) => {
   const { id } = req.params;
   const blog = await Blog.findById(id).populate("createdBy");
 
-  const comments = await Comment.find({ blogId: req.params.id }).populate(
-    "createdBy"
-  ).sort({ createdAt: -1 });
+  const comments = await Comment.find({ blogId: req.params.id }).populate("createdBy");
 
   res.render("view.ejs", {
     blog,
@@ -182,7 +180,8 @@ router.patch("/:id/update", upload.single("blogImage"), checkAuthenticationCooki
   const { title, content } = req.body;
 
   const updateData = { title, content };
-
+ 
+  // multer m files ke liye req.body ki jagh req.file aata hai
   if (req.file) {
     updateData.blogImage = req.file.path; // Cloudinary file path
   }
